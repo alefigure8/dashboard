@@ -25,7 +25,7 @@ const Layout = () => {
                     >New Client</Link>
                 </nav>
             </div>
-            <div className='md:w-10/12 p-10 bg-zinc-800 min-h-screen'>
+            <div className='md:w-10/12 p-10 bg-zinc-800 h-screen md:overflow-y-scroll'>
             <Outlet />
             </div>
             

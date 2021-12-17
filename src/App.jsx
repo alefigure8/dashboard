@@ -6,6 +6,7 @@ import Init from './pages/Init'
 import LoginForm from './pages/LoginForm'
 import ClientNew from './pages/ClientNew'
 import ClientEdit from './pages/ClientEdit'
+import ClientPage from './pages/ClientPage'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route index element={<Init />}/>
           <Route path="new" element={<ClientNew />}/>
           <Route path="edit/:id" element={<ClientEdit />}/>
+          <Route path=":id" element={<ClientPage />}/>
         </Route>
         
       </Routes>
