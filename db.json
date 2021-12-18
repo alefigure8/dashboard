@@ -7,14 +7,6 @@
       "phone": "1149369517",
       "observation": "Phasellus eget mauris eget massa elementum blandit eu vitae urna. Mauris porttitor, nunc vitae gravida dictum, risus sem faucibus eros, eget rhoncus nulla tellus sed ante. Curabitur dictum fringilla vehicula. Mauris scelerisque tellus sem, vel ornare tellus ultrices a.",
       "id": 1
-    },
-    {
-      "name": "José",
-      "business": "Jose Inc",
-      "email": "jose@gmail.com",
-      "phone": "70707070070",
-      "observation": "Maecenas est mauris, efficitur at sollicitudin sit amet, euismod sit amet mauris. Pellentesque dignissim, mi ut feugiat ultrices, sapien nunc porttitor mauris, eget vestibulum tortor ante quis diam. Nulla iaculis tortor felis, ac faucibus tortor porttitor sit amet. Suspendisse sed felis imperdiet metus venenatis dignissim a vitae metus. Fusce efficitur quam odio, et imperdiet leo fringilla vel. Curabitur risus nibh, vehicula id convallis vitae, interdum at lorem. Nulla facilisi. Sed viverra turpis a erat tincidunt semper. Pellentesque pellentesque tellus eu ex aliquet pellentesque. Nulla sodales et orci at mollis. Fusce non varius erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed tortor convallis, tempor lectus id, facilisis odio. Quisque non eros dignissim, sollicitudin quam quis, bibendum mauris. Nam odio risus, pulvinar vitae sodales id, pellentesque non nisi.",
-      "id": 2
     }
   ]
 }

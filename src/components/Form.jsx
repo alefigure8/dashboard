@@ -32,7 +32,7 @@ const FormAdd = ({id, client}) => {
         try {
             if(id){
                 // PUT
-                const url = `http://localhost:4000/clientes/${id}`
+                const url = `${import.meta.env.VITE_API_URL}/${id}`
                 const response = await fetch(url, {
                     method: "PUT",
                     headers: {
@@ -44,7 +44,7 @@ const FormAdd = ({id, client}) => {
             } else {
 
                 // POST
-                const url = 'http://localhost:4000/clientes'
+                const url = import.meta.env.VITE_API_URL
                 const response = await fetch(url, {
                     method: "POST",
                     headers: {
