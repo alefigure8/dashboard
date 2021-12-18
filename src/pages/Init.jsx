@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import Clients from '../components/Clients'
 import Spinner from '../components/Spinner'
 
@@ -23,6 +24,26 @@ const Init = () => {
         clients()
     }, [])
 
+    const handleDelete = async id => {
+        const confirmDelete = confirm('Are you sure?')
+        if(confirmDelete) {
+            try {
+                // DELETE
+                const url = `http://localhost:4000/clientes/${id}`
+                const response = await fetch(url, {
+                    method: "DELETE",
+                    headers: {
+                        'Content-Type': "application/json"
+                    }
+                })
+                await response.json()
+                setClients(clients.filter(clnt => clnt.id !== id))
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
+
     return (
         <>
             {loading ? <Spinner /> : 
@@ -33,7 +54,9 @@ const Init = () => {
                         <thead
                             className='bg-zinc-700 text-zinc-100'
                         >
-                            <tr>
+                            <tr
+                                className='text-left'
+                            >
                                 <th className='p-2'>
                                     Name
                                 </th>
@@ -52,6 +75,7 @@ const Init = () => {
                         {clients.map(client => (<Clients
                                                     key={client.id}
                                                     client={client}
+                                                    handleDelete={handleDelete}
                                                 />))}
                         </tbody>        
                     </table>

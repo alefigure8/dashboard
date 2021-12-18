@@ -1,11 +1,9 @@
-import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {Form, Formik, Field} from 'formik'
 import * as yup from 'yup'
 import Error from '../components/Error'
 
-const FormAdd = () => {
-
+const FormAdd = ({id, client}) => {
     const navigate = useNavigate()
 
     const NewSchema = yup.object().shape({
@@ -32,15 +30,30 @@ const FormAdd = () => {
 
     const handleSubmit = async (value) => {
         try {
-            const url = 'http://localhost:4000/clientes'
-            const response = await fetch(url, {
-                method: "POST",
-                headers: {
-                    'Content-Type': "application/json"
-                },
-                body:JSON.stringify(value)
-            })
-            await response.json()
+            if(id){
+                // PUT
+                const url = `http://localhost:4000/clientes/${id}`
+                const response = await fetch(url, {
+                    method: "PUT",
+                    headers: {
+                        'Content-Type': "application/json"
+                    },
+                    body:JSON.stringify(value)
+                })
+                await response.json()
+            } else {
+
+                // POST
+                const url = 'http://localhost:4000/clientes'
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': "application/json"
+                    },
+                    body:JSON.stringify(value)
+                })
+                await response.json()
+            }
         } catch (error) {
             console.log(error)
         }
@@ -48,15 +61,18 @@ const FormAdd = () => {
 
     return (
         <div className='bg-zinc-700 mt-10 px-5 py-10 rounded-md shadow-xl md:w-2/4 mx-auto'>
-            <h1 className='text-gray-50 font-bold text-xl uppercase text-center'>Add a Client</h1>
+            <h1 className='text-gray-50 font-bold text-xl uppercase text-center'>{id ? 'Edit Client' : 'Add a Client'}</h1>
             <Formik
-                initialValues={{
-                    name: '',
-                    business: '',
-                    email: '',
-                    phone: '',
-                    observation: '',
-                }}
+                initialValues={
+                {
+                    name: client?.name ?? '',
+                    business: client?.business ?? '',
+                    email: client?.email ?? '',
+                    phone: client?.phone ?? '',
+                    observation: client?.observation ?? '',
+                } 
+                }
+                enableReinitialize={true}
                 onSubmit={async (values, {resetForm})=>{
                    await handleSubmit(values)
                     resetForm()
@@ -155,7 +171,7 @@ const FormAdd = () => {
                         </div>
                         <input 
                             type="submit"
-                            value="Save"
+                            value={id ? 'Edit' : 'Save'}
                             className="w-full mt-5 bg-zinc-900 text-zinc-300 py-3 rounded-lg font-bold hover:cursor-pointer"
                         />
                     </Form>
@@ -163,6 +179,10 @@ const FormAdd = () => {
             </Formik>
         </div>
     )
+}
+
+FormAdd.defaultProps = {
+    client: {}
 }
 
 export default FormAdd
