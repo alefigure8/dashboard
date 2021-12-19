@@ -19,7 +19,7 @@ const ClientEdit = () => {
             } catch (error) {
                 console.log(error)
             }
-            setLoading(false)
+            setLoading(!loading)
         }
         clients()
     }, [])
@@ -27,16 +27,21 @@ const ClientEdit = () => {
     return (
         
         <>
-            <h1 className='text-gray-50 text-3xl font-bold'>Edit Client</h1>
-            <p className='text-gray-300 mt-3'> Fill in all the fields to register a client</p>
             {loading && <Spinner />}
-            {Object.keys(client).length ?  
-            
-            <FormAdd 
-                client={client}
-                id={id}
-            /> : 
-                <p className='text-zinc-400 font-bold text-2xl text-center mt-20'>Client with id: {id} not found!</p>
+            {client?.id ?  
+                <>
+                    <h1 className='text-gray-50 text-3xl font-bold'>Edit Client</h1>
+                    <p className='text-gray-300 mt-3'> Fill in all the fields to register a client</p>
+                    
+                    <FormAdd 
+                        client={client}
+                        id={id}
+                    /> 
+                </>
+            : 
+            <>
+                <p className='text-zinc-400 font-bold text-2xl text-center mt-20 flex flex-col h-48 justify-between'><i class="fas fa-sad-cry text-8xl"></i> Error 404: Client not found!</p>
+            </>
             }
            
          </>

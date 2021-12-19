@@ -1,8 +1,11 @@
 import {Outlet, Link, useLocation} from 'react-router-dom'
+import useLayoutButton from '../components/useLayoutButton'
 
 const Layout = () => {
 
-    const location = useLocation()
+    // custom hooks button
+    const [SelectUserBtn] = useLayoutButton('Client', '/clients', 'fas fa-user' )
+    const [SelectNewBtn] = useLayoutButton('New Client', '/clients/new', 'fas fa-pen' )
 
     return (
         <div className='md:flex md:min-h-screen'>
@@ -15,14 +18,8 @@ const Layout = () => {
                 <nav
                     className='mt-10 '
                 >
-                    <Link 
-                        to="/clients"
-                        className={ `text-gray-50 block mt-2 py-2 px-8 text-xl hover:text-gray-300 duration-300 transition-all ${location.pathname === '/clients' ? 'bg-neutral-800 rounded-r-3xl md:w-4/5 w-2/5' : 'w-0 bg-transparent'}`}
-                    >Client</Link>
-                    <Link 
-                        to="/clients/new"
-                        className={`text-gray-50 block mt-2 py-2 px-8 text-xl hover:text-gray-300 duration-300 transition-all ${location.pathname === '/clients/new' ? 'bg-neutral-800 rounded-r-3xl w-2/5 md:w-4/5' : 'w-48 bg-transparent'}`}
-                    >New Client</Link>
+                   <SelectUserBtn />
+                   <SelectNewBtn />
                 </nav>
             </div>
             <div className='md:w-10/12 p-10 bg-zinc-800 h-screen md:overflow-y-scroll'>

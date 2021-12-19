@@ -32,7 +32,7 @@ const ClientPage = () => {
                 :  
                     Object.keys(client).length === 0 
                         ?
-                            <p className='text-zinc-400 font-bold text-2xl text-center'>Client with id: {id} not found!</p>
+                        <p className='text-zinc-400 font-bold text-2xl text-center mt-20 flex flex-col h-48 justify-between'><i class="fas fa-sad-cry text-8xl"></i> Error 404: Client not found!</p>
                         :
                             ( 
                                 <>

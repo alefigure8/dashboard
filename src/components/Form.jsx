@@ -171,7 +171,7 @@ const FormAdd = ({id, client}) => {
                         </div>
                         <input 
                             type="submit"
-                            value={id ? 'Edit' : 'Save'}
+                            value={client?.id ? 'Edit' : 'Save'}
                             className="w-full mt-5 bg-zinc-900 text-zinc-300 py-3 rounded-lg font-bold hover:cursor-pointer"
                         />
                     </Form>
